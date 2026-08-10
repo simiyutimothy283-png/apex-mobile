@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-=*vt7^y-vi-=l4i)oa*vyd#r_yy#%*1ud!7kof+xzo^e7*a$pd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['apex-mobile.onrender.com', '.onrender.com', '127.0.0.1', 'localhost']
 
 
 # Application definition
