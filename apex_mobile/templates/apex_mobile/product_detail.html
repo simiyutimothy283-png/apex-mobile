@@ -1,0 +1,53 @@
+{% extends 'apex_mobile/base.html' %}
+
+{% block content %}
+<!-- Container with professional spacing -->
+<div class="max-w-6xl mx-auto p-4 md:p-8">
+    
+    <!-- Back Link -->
+    <a href="{% url 'home' %}" class="text-sm text-blue-400 hover:underline mb-6 block">← Back To Showroom Catalog</a>
+
+    <!-- Main Grid: 2 columns, wide gap -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+        
+        <!-- Image Column -->
+        <div class="w-full bg-slate-900 rounded-2xl p-8 flex items-center justify-center">
+            {% if product.image %}
+                <img src="{{ product.image.url }}" alt="{{ product.name }}" class="w-full h-auto object-contain">
+            {% else %}
+                <div class="h-64 flex items-center justify-center text-gray-500">NO IMAGE</div>
+            {% endif %}
+        </div>
+
+        <!-- Text Details Column -->
+        <div class="flex flex-col gap-6">
+            <div>
+                <span class="text-sm font-bold text-blue-400 uppercase tracking-widest">{{ product.brand }} Official Store</span>
+                <h1 class="text-5xl font-extrabold text-white mt-2">{{ product.name }}</h1>
+            </div>
+
+            <!-- Specs -->
+            <div class="flex flex-wrap gap-3">
+                <span class="bg-slate-800 text-slate-300 px-4 py-2 rounded-lg font-bold">{{ product.ram }} RAM</span>
+                <span class="bg-slate-800 text-slate-300 px-4 py-2 rounded-lg font-bold">{{ product.storage }} Storage</span>
+            </div>
+
+            <!-- Description -->
+            <p class="text-gray-400 leading-relaxed">{{ product.description }}</p>
+
+            <!-- Price -->
+            <div class="border-t border-slate-700 pt-6 mt-4">
+                <span class="text-3xl font-bold text-white">KES {{ product.price }}</span>
+                <form action="{% url 'cart_add' product.id %}" method="POST">
+    {% csrf_token %}
+    <button type="submit" class="w-full mt-6 bg-blue-600 hover:bg-blue-500 text-white font-bold py-4 rounded-xl transition-all">
+        ADD TO CART
+    </button>
+</form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+{% endblock %}

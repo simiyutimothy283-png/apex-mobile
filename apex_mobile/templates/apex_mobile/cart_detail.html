@@ -1,0 +1,21 @@
+{% extends 'apex_mobile/base.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto p-8 text-white">
+    <h1 class="text-3xl font-bold">Your Shopping Cart</h1>
+    
+    <div class="mt-6 bg-slate-900 p-6 rounded-xl">
+        {% for product_id, item in cart.items %}
+            <div class="flex justify-between p-4 border-b border-slate-700">
+                <span>Product ID: {{ product_id }}</span>
+                <span>Quantity: {{ item.quantity }}</span>
+                <span>Price: KES {{ item.price }}</span>
+            </div>
+        {% empty %}
+            <p class="text-slate-400">Your cart is currently empty.</p>
+        {% endfor %}
+    </div>
+    
+    <a href="{% url 'home' %}" class="mt-6 inline-block text-blue-400 hover:underline">← Continue Shopping</a>
+</div>
+{% endblock %}

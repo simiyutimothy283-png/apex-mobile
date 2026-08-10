@@ -1,0 +1,27 @@
+{% extends 'apex_mobile/base.html' %}
+
+{% block content %}
+<div class="max-w-md mx-auto px-4 py-12">
+    <h2 class="text-3xl font-bold text-white mb-6">Login to Apex</h2>
+    
+    <div class="bg-slate-900 p-6 rounded-lg border border-slate-700">
+        {% for message in messages %}
+    <div class="text-red-500 mb-4">{{ message }}</div>
+{% endfor %}
+        <form method="POST">
+            {% csrf_token %}
+            <div class="mb-4">
+                <label class="block text-white mb-2">Username</label>
+                <input type="text" name="username" class="w-full p-2 rounded bg-slate-800 text-white border border-slate-600">
+            </div>
+            <div class="mb-6">
+                <label class="block text-white mb-2">Password</label>
+                <input type="password" name="password" class="w-full p-2 rounded bg-slate-800 text-white border border-slate-600">
+            </div>
+            <button type="submit" class="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 font-bold">
+                Login
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

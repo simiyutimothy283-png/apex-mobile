@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" class="no-scrollbar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apex Mobile | Premium Smartphone Store</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        .premium-bg { background-color: #0B132B; }
+        .premium-card { background-color: #1C2541; }
+        .electric-blue { color: #48CAE4; }
+        .electric-bg { background-color: #0077B6; }
+        .no-scrollbar :-webkit-scrollbar {display:none; }
+        .no-scrollbar {-ms-overflow-style: none; scrollbar-width: none;}
+    </style>
+</head>
+<body class="premium-bg text-gray-100 min-h-screen font-sans flex flex-col overflow-x-hidden no-scrollbar">
+
+    
+            
+
+    {% include 'apex_mobile/header.html' %}
+
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 py-8">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="bg-emerald-500/20 border border-emerald-500 text-emerald-300 p-4 rounded-lg mb-6 font-medium">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+
+        {% block content %}{% endblock %}
+    </main>
+
+    {% include 'apex_mobile/footer.html' %}
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Check if the user has already registered
+        if (localStorage.getItem('hasRegisteredApex') === 'true') {
+            var popup = document.getElementById('regPopupModal');
+            if (popup) {
+                popup.style.display = 'none';
+            }
+        }
+    });
+</script>
+</body>
+</html>
+</body>
+</html>
